@@ -1,7 +1,7 @@
 from random import *
 import random
 import requests
-from sudoku_generator import *
+from check import *
 
 
 
@@ -71,6 +71,25 @@ class Board:
 					lst.append((x, y))
 
 		return lst
+
+	def solve(self):
+		empty = self.empty_cells()
+		if not empty:
+			return True
+		else:
+			x, y = empty[0]
+			for i in range(1, 10):
+				if valid(self.board, x, y, i):
+					self.set_value(x, y, i)
+
+					if self.solve():
+						return True
+				self.set_value(x, y, 0)
+
+		return False
+
+
+
 
 
 

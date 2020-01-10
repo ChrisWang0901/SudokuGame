@@ -1,4 +1,4 @@
-from sudoku_generator import *
+from check import *
 
 
 """
